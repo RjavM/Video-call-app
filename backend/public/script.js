@@ -24,9 +24,9 @@ navigator.mediaDevices.getUserMedia({
         connectToNewUser(userId, stream);
     })
 
-myPeer.on('open', id => {
-    socket.emit('join-room', ROOM_ID, id);
-} )
+    myPeer.on('open', id => {
+        socket.emit('join-room', ROOM_ID, id);
+    })
 
 })
 
@@ -46,7 +46,7 @@ function connectToNewUser(userId, stream) {
 
 function addVideoStream(video, stream) {
     video.srcObject = stream;
-    video.addEventListener('loadmetadata', () => {
+    video.addEventListener('loadedmetadata', () => {
         video.play();
     })
     videoGrid.append(video);
